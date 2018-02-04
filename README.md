@@ -62,7 +62,8 @@ The following properties can be configured:
 	<thead>
 	<tbody>
 		<tr>
-			<td><code>sensorType</code>
+			<td><code>sensorType</code></td>
+			<td>Sensor Type
 			        <br>Supports DHT11, DHT22 and AM2302 sensors
                                 <b>Possible values: <code>11</code>|<code>22</code>|<code>2302</code></b> 
 				<b>Default value:</b> <code>22</code>
