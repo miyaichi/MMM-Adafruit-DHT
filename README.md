@@ -1,13 +1,13 @@
 # MMM-Adafruit-DHT
-Additional Module for MagicMirror²  https://github.com/MichMich/MagicMirror
-It monitors temperature and humidity from sensor and calculate Heat Index https://en.wikipedia.org/wiki/Heat_index and Heat Color
+Additional Module for [MagicMirror2</sup>](https://github.com/MichMich/MagicMirror).
+It monitors temperature and humidity from sensor and calculate [Heat Index](https://en.wikipedia.org/wiki/Heat_index) and Heat Color
 
-<img src="/miyaichi/MMM-Adafruit-DHT/raw/master/widget.jpg" style="max-width:100%;">
+<img src="https://raw.githubusercontent.com/miyaichi/MMM-Adafruit-DHT/master/widget.png" style="max-width:100%;">
 
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
-- [Adafruit_Python_DHT] (https://github.com/adafruit/Adafruit_Python_DHT)
+- [Adafruit_Python_DHT](https://github.com/adafruit/Adafruit_Python_DHT)
 
 ## Installation
 
