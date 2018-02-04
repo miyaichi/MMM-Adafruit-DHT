@@ -1,6 +1,6 @@
 # MMM-Adafruit-DHT
 Additional Module for [MagicMirror2</sup>](https://github.com/MichMich/MagicMirror).
-It monitors temperature and humidity from sensor and calculate [Heat Index](https://en.wikipedia.org/wiki/Heat_index) and Heat Color
+It monitors temperature and humidity from sensor and calculate [Heat Index](https://en.wikipedia.org/wiki/Heat_index) and reflected in text color.
 
 <img src="https://raw.githubusercontent.com/miyaichi/MMM-Adafruit-DHT/master/widget.png" style="max-width:100%;">
 
@@ -64,8 +64,11 @@ The following properties can be configured:
 		<tr>
 			<td><code>sensorType</code></td>
 			<td>Sensor Type
+                                <br>
 			        <br>Supports DHT11, DHT22 and AM2302 sensors
+                                <br>
                                 <b>Possible values: <code>11</code>|<code>22</code>|<code>2302</code></b> 
+                                <br>
 				<b>Default value:</b> <code>22</code>
 			</td>
 		</tr>
