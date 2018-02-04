@@ -47,7 +47,7 @@ modules: [
     },
   },
 ]
-`
+```
 
 ## Configuration options
 
