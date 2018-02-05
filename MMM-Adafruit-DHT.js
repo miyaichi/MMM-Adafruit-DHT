@@ -46,6 +46,18 @@ Module.register('MMM-Adafruit-DHT', {
         td.className = 'medium light bright bold';
         td.innerHTML = this.humidity + '%';
         tr.appendChild(td);
+        var td = document.createElement('td');
+        tr.appendChild(td);
+
+        table.appendChild(tr);
+
+        var tr = document.createElement('tr');
+
+        var td = document.createElement('td');
+        td.innerHTML = '<hr style="border: 0; height: 2px; background-image: linear-gradient(to right, #0000FF, #FFFFFF, #FFA500, #FF0000);">';
+        tr.appendChild(td);
+        var td = document.createElement('td');
+        tr.appendChild(td);
 
         table.appendChild(tr);
         wrapper.appendChild(table);
