@@ -17,7 +17,7 @@ module.exports = NodeHelper.create({
             const self = this
             this.config = payload
 
-            exec('sudo ./modules/MMM-Adafruit-DHT/read_data ' + this.config.sensorType + ' ' + this.config.sensorPin + ' ' + this.config.unit, (error, stdout) => {
+            exec('sudo ./modules/MMM-Adafruit-DHT/read_data ' + this.config.sensorType + ' ' + this.config.sensorPin + ' ' + this.config.unit + ' ' + this.config.correction_value, (error, stdout) => {
                 if (error) {
                     console.error(`exec error: ${error}`);
                     return;

@@ -42,20 +42,17 @@ color_maps = [
 ]
 
 
-def hex_to_rgb(hex):
-    hex = hex.lstrip('#')
-    return tuple(int(hex[i:i + 2], 16) for i in (0, 2, 4))
-
-
-def rgb_to_hex(rgb):
-    return '#' + ''.join(map(lambda x: '{:02x}'.format(x), rgb))
-
-
-def geometric(a, b, p):
-    return int((b - a) * p / 100 + a)
-
-
 def gradation(color_a, color_b, val_a, val_b, val_x):
+    def hex_to_rgb(hex):
+        hex = hex.lstrip('#')
+        return tuple(int(hex[i:i + 2], 16) for i in (0, 2, 4))
+
+    def rgb_to_hex(rgb):
+        return '#' + ''.join(map(lambda x: '{:02x}'.format(x), rgb))
+
+    def geometric(a, b, p):
+        return int((b - a) * p / 100 + a)
+
     p = (val_x - val_a) / (val_b - val_a) * 100
     rgb_a = hex_to_rgb(color_a)
     rgb_b = hex_to_rgb(color_b)
@@ -72,7 +69,7 @@ def celsius(f):
 
 
 def heat_index(f, h):
-    if (f < 80):
+    if f < 80:
         return f
     return -42.379 + 2.04901523 * f + 10.14333127 * h - 0.22475541 * \
         f * h - 6.83783 * (10 ** -3) * (f ** 2) - 5.481717 * \
@@ -84,10 +81,11 @@ def heat_index(f, h):
 def heat_color(f):
     c = celsius(f)
     color = '#ffffff'  # white
-    for cm in color_maps:
-        if cm['celsius_a'] <= c and c < cm['celsius_b']:
-            color = gradation(cm['color_a'], cm['color_b'], cm['celsius_a'],
-                              cm['celsius_b'], c)
+    for color_map in color_maps:
+        if color_map['celsius_a'] <= c < color_map['celsius_b']:
+            color = gradation(color_map['color_a'], color_map['color_b'],
+                              color_map['celsius_a'], color_map['celsius_b'],
+                              c)
             break
     return color
 
@@ -99,18 +97,19 @@ if __name__ == '__main__':
         '2302': Adafruit_DHT.AM2302
     }
 
-    if len(sys.argv) == 4 and sys.argv[1] in sensor_type:
-        sensor, pin, unit = sys.argv[1:]
+    if len(sys.argv) == 5 and sys.argv[1] in sensor_type:
+        sensor, pin, unit, correction_value = sys.argv[1:]
         sensor = sensor_type[sensor]
-        pin = sys.argv[2]
-        unit = sys.argv[3]
+        correction_value = float(correction_value)
     else:
-        print('usage: sudo {0} [11|22|2302] <pin#> [C|F]'.format(__file__))
+        print('usage: sudo {0} [11|22|2302] <pin#> [C|F] <correction_value>'.
+              format(__file__))
         sys.exit(1)
 
     h, c = Adafruit_DHT.read_retry(sensor, pin)
     if h is None or c is None:
         sys.exit(1)
+    c += correction_value
 
     f = fahrenheit(c)
     index = heat_index(f, h)
